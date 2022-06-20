@@ -6,11 +6,27 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
+    @StateObject private var locationManager = LocationManager()
+    @StateObject private var notificationManager = NotificationManager()
+    
+    let newUser:User = User("Duke Wu")
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Map(coordinateRegion: $locationManager.region, showsUserLocation: true)
+                .ignoresSafeArea()
+                .onAppear {
+                    locationManager.checkIfLocationServicesIsEnabled()
+                    notificationManager.requestNotificationAuthorization()
+                }
+            Button("Send Notification") {
+                notificationManager.displayNotification()
+            }
+        }
+        
     }
 }
 

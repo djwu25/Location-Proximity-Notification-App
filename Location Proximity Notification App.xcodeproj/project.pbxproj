@@ -14,6 +14,9 @@
 		AB33B66B286103BC00562A5B /* Location_Proximity_Notification_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B66A286103BC00562A5B /* Location_Proximity_Notification_AppTests.swift */; };
 		AB33B675286103BC00562A5B /* Location_Proximity_Notification_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B674286103BC00562A5B /* Location_Proximity_Notification_AppUITests.swift */; };
 		AB33B677286103BC00562A5B /* Location_Proximity_Notification_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B676286103BC00562A5B /* Location_Proximity_Notification_AppUITestsLaunchTests.swift */; };
+		AB33B684286112AE00562A5B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B683286112AE00562A5B /* User.swift */; };
+		AB33B68828611E1300562A5B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B68728611E1300562A5B /* LocationManager.swift */; };
+		AB33B68B2861321C00562A5B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B68A2861321C00562A5B /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		AB33B670286103BC00562A5B /* Location Proximity Notification AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Location Proximity Notification AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB33B674286103BC00562A5B /* Location_Proximity_Notification_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location_Proximity_Notification_AppUITests.swift; sourceTree = "<group>"; };
 		AB33B676286103BC00562A5B /* Location_Proximity_Notification_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location_Proximity_Notification_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AB33B683286112AE00562A5B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AB33B68728611E1300562A5B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		AB33B68A2861321C00562A5B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +104,9 @@
 				AB33B65B286103BB00562A5B /* ContentView.swift */,
 				AB33B65D286103BC00562A5B /* Assets.xcassets */,
 				AB33B65F286103BC00562A5B /* Preview Content */,
+				AB33B683286112AE00562A5B /* User.swift */,
+				AB33B68728611E1300562A5B /* LocationManager.swift */,
+				AB33B68A2861321C00562A5B /* NotificationManager.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -107,7 +116,8 @@
 			children = (
 				AB33B660286103BC00562A5B /* Preview Assets.xcassets */,
 			);
-			path = "Preview Content";
+			name = "Preview Content";
+			path = "../Preview Content";
 			sourceTree = "<group>";
 		};
 		AB33B669286103BC00562A5B /* Unit Tests */ = {
@@ -257,8 +267,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB33B68828611E1300562A5B /* LocationManager.swift in Sources */,
 				AB33B65C286103BB00562A5B /* ContentView.swift in Sources */,
+				AB33B68B2861321C00562A5B /* NotificationManager.swift in Sources */,
 				AB33B65A286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift in Sources */,
+				AB33B684286112AE00562A5B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,10 +429,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Location Proximity Notification App/Preview Content\"";
-				DEVELOPMENT_TEAM = VQ65A33ENA;
+				DEVELOPMENT_ASSET_PATHS = "\"App/Preview Content\"";
+				DEVELOPMENT_TEAM = 2BWGQ32QG7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Location-Proximity-Notification-App-Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location in need of usage";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location in need of usage";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -445,10 +461,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Location Proximity Notification App/Preview Content\"";
-				DEVELOPMENT_TEAM = VQ65A33ENA;
+				DEVELOPMENT_ASSET_PATHS = "\"App/Preview Content\"";
+				DEVELOPMENT_TEAM = 2BWGQ32QG7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Location-Proximity-Notification-App-Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location in need of usage";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location in need of usage";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
