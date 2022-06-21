@@ -17,6 +17,13 @@
 		AB33B684286112AE00562A5B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B683286112AE00562A5B /* User.swift */; };
 		AB33B68828611E1300562A5B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B68728611E1300562A5B /* LocationManager.swift */; };
 		AB33B68B2861321C00562A5B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B68A2861321C00562A5B /* NotificationManager.swift */; };
+		AB33B68E28624FCF00562A5B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AB33B68D28624FCF00562A5B /* FirebaseAuth */; };
+		AB33B69028624FCF00562A5B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = AB33B68F28624FCF00562A5B /* FirebaseFirestore */; };
+		AB33B6922862503900562A5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB33B6912862503900562A5B /* GoogleService-Info.plist */; };
+		AB33B6962862647400562A5B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B6952862647400562A5B /* LoginView.swift */; };
+		AB33B6982862675B00562A5B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B6972862675A00562A5B /* HomeView.swift */; };
+		AB33B69A286267AA00562A5B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B699286267AA00562A5B /* MapView.swift */; };
+		AB33B69C2862738B00562A5B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B69B2862738B00562A5B /* SignUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +57,11 @@
 		AB33B683286112AE00562A5B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AB33B68728611E1300562A5B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		AB33B68A2861321C00562A5B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		AB33B6912862503900562A5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AB33B6952862647400562A5B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		AB33B6972862675A00562A5B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		AB33B699286267AA00562A5B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		AB33B69B2862738B00562A5B /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +69,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB33B68E28624FCF00562A5B /* FirebaseAuth in Frameworks */,
+				AB33B69028624FCF00562A5B /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,13 +114,14 @@
 		AB33B658286103BB00562A5B /* App */ = {
 			isa = PBXGroup;
 			children = (
+				AB33B69E2862765700562A5B /* Manager */,
+				AB33B69D2862764600562A5B /* View */,
 				AB33B659286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift */,
 				AB33B65B286103BB00562A5B /* ContentView.swift */,
 				AB33B65D286103BC00562A5B /* Assets.xcassets */,
 				AB33B65F286103BC00562A5B /* Preview Content */,
 				AB33B683286112AE00562A5B /* User.swift */,
-				AB33B68728611E1300562A5B /* LocationManager.swift */,
-				AB33B68A2861321C00562A5B /* NotificationManager.swift */,
+				AB33B6912862503900562A5B /* GoogleService-Info.plist */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -137,6 +152,26 @@
 			path = "UI Tests";
 			sourceTree = "<group>";
 		};
+		AB33B69D2862764600562A5B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB33B6952862647400562A5B /* LoginView.swift */,
+				AB33B6972862675A00562A5B /* HomeView.swift */,
+				AB33B699286267AA00562A5B /* MapView.swift */,
+				AB33B69B2862738B00562A5B /* SignUpView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB33B69E2862765700562A5B /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				AB33B68728611E1300562A5B /* LocationManager.swift */,
+				AB33B68A2861321C00562A5B /* NotificationManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -153,6 +188,10 @@
 			dependencies = (
 			);
 			name = "Location Proximity Notification App";
+			packageProductDependencies = (
+				AB33B68D28624FCF00562A5B /* FirebaseAuth */,
+				AB33B68F28624FCF00562A5B /* FirebaseFirestore */,
+			);
 			productName = "Location Proximity Notification App";
 			productReference = AB33B656286103BB00562A5B /* Location Proximity Notification App.app */;
 			productType = "com.apple.product-type.application";
@@ -225,6 +264,9 @@
 				Base,
 			);
 			mainGroup = AB33B64D286103BB00562A5B;
+			packageReferences = (
+				AB33B68C28624FCF00562A5B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = AB33B657286103BB00562A5B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -243,6 +285,7 @@
 			files = (
 				AB33B661286103BC00562A5B /* Preview Assets.xcassets in Resources */,
 				AB33B65E286103BC00562A5B /* Assets.xcassets in Resources */,
+				AB33B6922862503900562A5B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,9 +311,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB33B68828611E1300562A5B /* LocationManager.swift in Sources */,
+				AB33B69A286267AA00562A5B /* MapView.swift in Sources */,
+				AB33B6982862675B00562A5B /* HomeView.swift in Sources */,
 				AB33B65C286103BB00562A5B /* ContentView.swift in Sources */,
 				AB33B68B2861321C00562A5B /* NotificationManager.swift in Sources */,
 				AB33B65A286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift in Sources */,
+				AB33B6962862647400562A5B /* LoginView.swift in Sources */,
+				AB33B69C2862738B00562A5B /* SignUpView.swift in Sources */,
 				AB33B684286112AE00562A5B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -602,6 +649,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AB33B68C28624FCF00562A5B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AB33B68D28624FCF00562A5B /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB33B68C28624FCF00562A5B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		AB33B68F28624FCF00562A5B /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB33B68C28624FCF00562A5B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AB33B64E286103BB00562A5B /* Project object */;
 }

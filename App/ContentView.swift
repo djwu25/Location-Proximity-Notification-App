@@ -7,26 +7,17 @@
 
 import SwiftUI
 import MapKit
+import Firebase
 
 struct ContentView: View {
-    @StateObject private var locationManager = LocationManager()
-    @StateObject private var notificationManager = NotificationManager()
-    
-    let newUser:User = User("Duke Wu")
+    @State var signedIn:Bool = false
     
     var body: some View {
-        VStack {
-            Map(coordinateRegion: $locationManager.region, showsUserLocation: true)
-                .ignoresSafeArea()
-                .onAppear {
-                    locationManager.checkIfLocationServicesIsEnabled()
-                    notificationManager.requestNotificationAuthorization()
-                }
-            Button("Send Notification") {
-                notificationManager.displayNotification()
-            }
+        if signedIn {
+            HomeView(signedIn: $signedIn)
+        } else {
+            LoginView(signedIn: $signedIn)
         }
-        
     }
 }
 
