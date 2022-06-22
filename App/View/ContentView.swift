@@ -10,13 +10,13 @@ import MapKit
 import Firebase
 
 struct ContentView: View {
-    @State var signedIn:Bool = false
+    @AppStorage("status") var logged = false
     
     var body: some View {
-        if signedIn {
-            HomeView(signedIn: $signedIn)
+        if logged {
+            HomeView()
         } else {
-            LoginView(signedIn: $signedIn)
+            LoginView()
         }
     }
 }

@@ -22,8 +22,7 @@ struct PrimaryButtonStyle: ButtonStyle {
 struct HomeView: View {
     @StateObject private var notificationManager = NotificationManager()
     @State private var showMap = false
-    @Binding var signedIn:Bool
-    
+    @AppStorage("status") var logged = false
     var body: some View {
         VStack {
             Button("Go to Map", action: showOnMap)
@@ -53,14 +52,12 @@ struct HomeView: View {
     func signOut() {
         try? Auth.auth().signOut()
         
-        self.signedIn = false
+        self.logged = false
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
-    @State static var signedIn:Bool = false
-    
     static var previews: some View {
-        HomeView(signedIn: $signedIn)
+        HomeView()
     }
 }

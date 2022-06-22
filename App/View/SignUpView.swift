@@ -11,7 +11,7 @@ import Firebase
 struct SignUpView: View {
     @State var email:String = ""
     @State var password:String = ""
-    @Binding var signedIn:Bool
+    @AppStorage("status") var logged = false
     
     var body: some View {
         VStack {
@@ -44,7 +44,7 @@ struct SignUpView: View {
                 print(error!.localizedDescription)
             }
         }
-        signedIn = true
+        self.logged = true
     }
 }
 
@@ -57,9 +57,7 @@ struct SignUpTitle: View {
 }
 
 struct SignUpView_Previews: PreviewProvider {
-    @State static var signedIn:Bool = false
-    
     static var previews: some View {
-        SignUpView(signedIn: $signedIn)
+        SignUpView()
     }
 }

@@ -24,6 +24,7 @@
 		AB33B6982862675B00562A5B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B6972862675A00562A5B /* HomeView.swift */; };
 		AB33B69A286267AA00562A5B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B699286267AA00562A5B /* MapView.swift */; };
 		AB33B69C2862738B00562A5B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B69B2862738B00562A5B /* SignUpView.swift */; };
+		AB33B6A1286296AB00562A5B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B6A0286296AB00562A5B /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		AB33B6972862675A00562A5B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AB33B699286267AA00562A5B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		AB33B69B2862738B00562A5B /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		AB33B6A0286296AB00562A5B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,10 +116,10 @@
 		AB33B658286103BB00562A5B /* App */ = {
 			isa = PBXGroup;
 			children = (
+				AB33B69F2862960D00562A5B /* ViewModel */,
 				AB33B69E2862765700562A5B /* Manager */,
 				AB33B69D2862764600562A5B /* View */,
 				AB33B659286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift */,
-				AB33B65B286103BB00562A5B /* ContentView.swift */,
 				AB33B65D286103BC00562A5B /* Assets.xcassets */,
 				AB33B65F286103BC00562A5B /* Preview Content */,
 				AB33B683286112AE00562A5B /* User.swift */,
@@ -155,6 +157,7 @@
 		AB33B69D2862764600562A5B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AB33B65B286103BB00562A5B /* ContentView.swift */,
 				AB33B6952862647400562A5B /* LoginView.swift */,
 				AB33B6972862675A00562A5B /* HomeView.swift */,
 				AB33B699286267AA00562A5B /* MapView.swift */,
@@ -170,6 +173,14 @@
 				AB33B68A2861321C00562A5B /* NotificationManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		AB33B69F2862960D00562A5B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AB33B6A0286296AB00562A5B /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +329,7 @@
 				AB33B65A286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift in Sources */,
 				AB33B6962862647400562A5B /* LoginView.swift in Sources */,
 				AB33B69C2862738B00562A5B /* SignUpView.swift in Sources */,
+				AB33B6A1286296AB00562A5B /* LoginViewModel.swift in Sources */,
 				AB33B684286112AE00562A5B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -481,6 +493,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Location-Proximity-Notification-App-Info.plist";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Quick Access to Application with Face ID";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location in need of usage";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location in need of usage";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -513,6 +526,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Location-Proximity-Notification-App-Info.plist";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Quick Access to Application with Face ID";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location in need of usage";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location in need of usage";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
