@@ -7,8 +7,12 @@
 
 import Foundation
 import UserNotifications
+import Firebase
+import CoreLocation
 
 class NotificationManager: ObservableObject {
+    var userClose:String = ""
+    
     func requestNotificationAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {
             success, error in
@@ -22,8 +26,8 @@ class NotificationManager: ObservableObject {
     
     func displayNotification() {
         let content = UNMutableNotificationContent()
-        content.title = "Test Notification"
-        content.subtitle = "Working Notification If Displayed"
+        content.title = "\(userClose) IS NEARBY"
+        content.subtitle = "\(userClose) is within 10 miles of your location"
         content.sound = UNNotificationSound.default
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)

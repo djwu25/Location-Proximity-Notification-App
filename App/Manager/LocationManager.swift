@@ -65,14 +65,20 @@ struct Place: Identifiable {
   var coordinate: CLLocationCoordinate2D
 }
 
-class locationObserver: ObservableObject {
+class LocationObserver: ObservableObject {
     @Published var friendLocations = [String : GeoPoint]()
     @Published var annotations = [Place]()
+    @Published var distances = [String : CLLocationDistance]()
+    @Published var notClose = true
     
-    var userEmail = Auth.auth().currentUser?.email
+    private let locationManager = LocationManager()
+    private let notificationManager = NotificationManager()
+    private let tenMilesInMeters = CLLocationDistance(16093.5)
+    let userEmail = Auth.auth().currentUser?.email
     
     init() {
         let db = Firestore.firestore()
+        self.locationManager.checkIfLocationServicesIsEnabled()
         
         db.collection("locations").document("sharing").addSnapshotListener { (snap, err) in
             if err != nil {
@@ -86,9 +92,18 @@ class locationObserver: ObservableObject {
             for loc in self.friendLocations {
                 if loc.key != self.userEmail {
                     self.annotations.append(Place(name: loc.key, coordinate: CLLocationCoordinate2D(latitude: loc.value.latitude, longitude: loc.value.longitude)))
+                    self.distances[loc.key] = self.locationManager.locationManager?.location?.distance(from: CLLocation(latitude: loc.value.latitude, longitude: loc.value.longitude))
+                }
+            }
+            
+            for friend in self.distances {
+                if friend.value < self.tenMilesInMeters && self.notClose {
+                    print("Notification for Distance Triggered")
+                    self.notificationManager.userClose = friend.key
+                    self.notificationManager.displayNotification()
+                    self.notClose = false
                 }
             }
         }
-        
     }
 }

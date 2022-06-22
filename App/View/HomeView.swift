@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 import simd
+import BackgroundTasks
 
 struct PrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
@@ -21,8 +22,10 @@ struct PrimaryButtonStyle: ButtonStyle {
 
 struct HomeView: View {
     @StateObject private var notificationManager = NotificationManager()
+    @StateObject private var locObserver = LocationObserver()
     @State private var showMap = false
     @AppStorage("status") var logged = false
+    
     var body: some View {
         VStack {
             Text("User: \(Auth.auth().currentUser?.email ?? "")")

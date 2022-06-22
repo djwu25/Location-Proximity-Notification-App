@@ -19,10 +19,15 @@ struct Location_Proximity_Notification_AppApp: App {
     }
 }
 
+func scheduleAppRefresh() {
+    
+}
+
 // Initialize Firebase
 class Delegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
+        
         return true
     }
 }
