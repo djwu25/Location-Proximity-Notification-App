@@ -11,13 +11,14 @@ import LocalAuthentication
 class LoginViewModel:ObservableObject {
     @Published var email = ""
     @Published var password = ""
+    @Published var displayName = ""
     
     // Alerts
     @Published var alert:Bool = false
     @Published var alertMessage = ""
     
     // User Data
-    @AppStorage("stored_User") var storedUser = ""
+    @AppStorage("stored_Email") var storedEmail = ""
     @AppStorage("stored_Password") var storedPassword = ""
     @AppStorage("status") var logged = false
     
@@ -25,7 +26,7 @@ class LoginViewModel:ObservableObject {
     // Get BiometricType
     func getBioMetricStatus()->Bool {
         let scanner = LAContext()
-        if email == storedUser && scanner.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: .none) {
+        if email == storedEmail && email != "" && scanner.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: .none) {
             return true
         }
         return false
@@ -40,29 +41,34 @@ class LoginViewModel:ObservableObject {
                 return
             }
             
+            DispatchQueue.main.async {
+                self.password = self.storedPassword
+                self.verifyUser()
+            }
         }
     }
     
     // Verifying User
     func verifyUser() {
-        Auth.auth().signIn(withEmail: email, password: password) { (res, err) in
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (result, err) in
             if let error = err {
                 self.alert.toggle()
                 self.alertMessage = error.localizedDescription
                 print("Email and Password Failed")
                 return
             }
+            // Success
+            if self.storedEmail != self.email || self.storedPassword != self.password {
+                self.storeInfo = true
+                return
+            }
+            
+            // Go to Home
+            withAnimation{self.logged = true}
+            print("Successfully Logged in with Biometrics")
         }
         
-        // Success
-        print("Email and Password Passed")
-        if self.storedUser == "" || self.storedPassword == "" {
-            self.storeInfo.toggle()
-            return
-        }
         
-        // Go to Home
-        withAnimation{self.logged = true}
-        print("Successfully Logged in with Biometrics")
     }
 }

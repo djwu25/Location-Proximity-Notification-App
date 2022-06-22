@@ -8,6 +8,7 @@
 import SwiftUI
 import MapKit
 import Firebase
+import CoreLocation
 
 struct ContentView: View {
     @AppStorage("status") var logged = false

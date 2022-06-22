@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Firebase
 
 class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:32.8801, longitude: -117.2340), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
@@ -18,6 +19,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
             locationManager!.delegate = self
+            locationManager!.startUpdatingLocation()
         } else {
             print("Missing Location Services. Need to turn on.")
         }
@@ -41,5 +43,52 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkLocationAuthorization()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let last = locations.last
+        
+        let db = Firestore.firestore()
+        
+        db.collection("locations").document("sharing").setData(["updates" : [Auth.auth().currentUser?.email : GeoPoint(latitude: (last?.coordinate.latitude)!, longitude: (last?.coordinate.longitude)!)]], merge: true) { (err) in
+            if err != nil {
+                print((err?.localizedDescription)!)
+                return
+            }
+        }
+    }
+}
+
+struct Place: Identifiable {
+  let id = UUID()
+  var name: String
+  var coordinate: CLLocationCoordinate2D
+}
+
+class locationObserver: ObservableObject {
+    @Published var friendLocations = [String : GeoPoint]()
+    @Published var annotations = [Place]()
+    
+    var userEmail = Auth.auth().currentUser?.email
+    
+    init() {
+        let db = Firestore.firestore()
+        
+        db.collection("locations").document("sharing").addSnapshotListener { (snap, err) in
+            if err != nil {
+                print((err?.localizedDescription)!)
+            }
+            
+            let updates = snap?.get("updates") as! [String: GeoPoint]
+            self.friendLocations = updates
+            
+            self.annotations.removeAll()
+            for loc in self.friendLocations {
+                if loc.key != self.userEmail {
+                    self.annotations.append(Place(name: loc.key, coordinate: CLLocationCoordinate2D(latitude: loc.value.latitude, longitude: loc.value.longitude)))
+                }
+            }
+        }
+        
     }
 }

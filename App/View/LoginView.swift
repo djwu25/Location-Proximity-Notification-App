@@ -25,7 +25,7 @@ struct LoginView: View {
     @StateObject var loginVM = LoginViewModel()
     @State var signUp:Bool = false
     
-    @AppStorage("stored_User") var storedUser = ""
+    @AppStorage("stored_Email") var storedEmail = ""
     @AppStorage("stored_Password") var storedPassword = ""
     @AppStorage("status") var logged = false
     
@@ -82,33 +82,26 @@ struct LoginView: View {
             
             Button("New User? Register an Account Here", action: toSignUp)
                 .padding()
+                .alert(isPresented: $loginVM.storeInfo, content: {
+                    Alert(title: Text("Message"), message: Text("Store Information for Future Login Using Touch/Face ID?"), primaryButton: .default(Text("Accept"), action: {
+                        // Store Info with Biometric
+                        storedEmail = loginVM.email
+                        storedPassword = loginVM.password
+                        
+                        withAnimation{self.logged = true}
+                    }), secondaryButton: .cancel({
+                        // Redirecting to Home
+                        withAnimation{self.logged = true}
+                    }))
+                })
             Button(action: {}, label: {
                 Text("Forgot Password?")
             })
             .padding()
-            .alert(isPresented: $loginVM.storeInfo, content: {
-                Alert(title: Text("Message"), message: Text("Store Information for Future Login Using Touch/Face ID?"), primaryButton: .default(Text("Accept"), action: {
-                    // Store Info with Biometric
-                    storedUser = loginVM.email
-                    storedPassword = loginVM.password
-                    
-                    withAnimation{self.logged = true}
-                }), secondaryButton: .cancel({
-                    // Redirecting to Home
-                    withAnimation{self.logged = true}
-                }))
-            })
+            
             Spacer()
         }
         .padding()
-        .onAppear {
-            Auth.auth().addStateDidChangeListener { auth, user in
-                if user != nil {
-                    self.logged = true
-                }
-            }
-            // perform: authenticate
-        }
         .sheet(isPresented: $signUp) {
             SignUpView()
         }
@@ -116,15 +109,6 @@ struct LoginView: View {
     
     func toSignUp() {
         signUp = true
-    }
-    
-    func login() {
-        Auth.auth().signIn(withEmail: loginVM.email, password: loginVM.password) { result, error in
-            if error != nil {
-                print(error!.localizedDescription)
-            }
-        }
-        self.logged = true
     }
 }
 

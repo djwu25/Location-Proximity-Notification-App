@@ -25,6 +25,10 @@ struct HomeView: View {
     @AppStorage("status") var logged = false
     var body: some View {
         VStack {
+            Text("User: \(Auth.auth().currentUser?.email ?? "")")
+                .padding()
+            Text("ID:   \(Auth.auth().currentUser?.uid ?? "")")
+                .padding()
             Button("Go to Map", action: showOnMap)
                 .buttonStyle(PrimaryButtonStyle())
             Button("Send Notification", action: sendNotification)
