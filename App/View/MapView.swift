@@ -29,6 +29,7 @@ struct MapView: View {
             .onAppear {
                 locationManager.checkIfLocationServicesIsEnabled()
             }
+            .ignoresSafeArea()
         }
 
     }
