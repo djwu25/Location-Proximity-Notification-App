@@ -25,6 +25,8 @@
 		AB33B69A286267AA00562A5B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B699286267AA00562A5B /* MapView.swift */; };
 		AB33B69C2862738B00562A5B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B69B2862738B00562A5B /* SignUpView.swift */; };
 		AB33B6A1286296AB00562A5B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B6A0286296AB00562A5B /* LoginViewModel.swift */; };
+		AB33B6B228662FB400562A5B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B6B128662FB400562A5B /* ProfileView.swift */; };
+		AB33B6B42866306F00562A5B /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B6B32866306F00562A5B /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		AB33B699286267AA00562A5B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		AB33B69B2862738B00562A5B /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		AB33B6A0286296AB00562A5B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		AB33B6B128662FB400562A5B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		AB33B6B32866306F00562A5B /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +166,8 @@
 				AB33B6972862675A00562A5B /* HomeView.swift */,
 				AB33B699286267AA00562A5B /* MapView.swift */,
 				AB33B69B2862738B00562A5B /* SignUpView.swift */,
+				AB33B6B128662FB400562A5B /* ProfileView.swift */,
+				AB33B6B32866306F00562A5B /* WelcomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -328,8 +334,10 @@
 				AB33B68B2861321C00562A5B /* NotificationManager.swift in Sources */,
 				AB33B65A286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift in Sources */,
 				AB33B6962862647400562A5B /* LoginView.swift in Sources */,
+				AB33B6B42866306F00562A5B /* WelcomeView.swift in Sources */,
 				AB33B69C2862738B00562A5B /* SignUpView.swift in Sources */,
 				AB33B6A1286296AB00562A5B /* LoginViewModel.swift in Sources */,
+				AB33B6B228662FB400562A5B /* ProfileView.swift in Sources */,
 				AB33B684286112AE00562A5B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

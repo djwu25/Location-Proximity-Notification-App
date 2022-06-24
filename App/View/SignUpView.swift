@@ -42,9 +42,19 @@ struct SignUpView: View {
         Auth.auth().createUser(withEmail: email, password: password ) { result, error in
             if error != nil {
                 print(error!.localizedDescription)
+                return
+            }
+            
+            Auth.auth().signIn(withEmail: email, password: password) { result, error in
+                if error != nil {
+                    print(error!.localizedDescription)
+                    return
+                }
+                
+                self.logged = true
             }
         }
-        self.logged = true
+        
     }
 }
 

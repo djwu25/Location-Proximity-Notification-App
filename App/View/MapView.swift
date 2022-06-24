@@ -16,12 +16,6 @@ struct MapView: View {
     
     var body: some View {
         VStack(alignment: .trailing) {
-            Button(action: {dismiss()}, label: {
-                Text("X")
-                    .foregroundColor(Color.green)
-                    .font(.title2)
-            })
-            .padding()
             Map(coordinateRegion: $locationManager.region, showsUserLocation: true, annotationItems: $locations.annotations) { place in
                 MapAnnotation(coordinate: place.wrappedValue.coordinate) {
                     PlaceAnnotationView(title: place.name)
@@ -31,7 +25,7 @@ struct MapView: View {
                 locationManager.checkIfLocationServicesIsEnabled()
                 locations.notClose = true
             }
-            .ignoresSafeArea()
+            .edgesIgnoringSafeArea(.top)
         }
 
     }
@@ -50,10 +44,12 @@ struct PlaceAnnotationView: View {
             .foregroundColor(Color.black)
             .cornerRadius(10)
             .opacity(showTitle ? 1 : 0)
+            .offset(x: 0, y: -15)
           
           Image(systemName: "mappin.circle.fill")
             .font(.title2)
             .foregroundColor(.red)
+            .offset(x: 0, y: -15)
         }
         .onTapGesture {
             withAnimation(.easeOut) {

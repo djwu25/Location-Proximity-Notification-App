@@ -27,39 +27,26 @@ struct HomeView: View {
     @AppStorage("status") var logged = false
     
     var body: some View {
-        VStack {
-            Text("User: \(Auth.auth().currentUser?.email ?? "")")
-                .padding()
-            Text("ID:   \(Auth.auth().currentUser?.uid ?? "")")
-                .padding()
-            Button("Go to Map", action: showOnMap)
-                .buttonStyle(PrimaryButtonStyle())
-            Button("Send Notification", action: sendNotification)
-                .buttonStyle(PrimaryButtonStyle())
-            Button("Sign Out", action: signOut)
-                .buttonStyle(PrimaryButtonStyle())
+        TabView {
+            WelcomeView()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home")
+                }
+            MapView()
+                .tabItem {
+                    Image(systemName: "map")
+                    Text("Map")
+                }
+            ProfileView()
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("Profile")
+                }
         }
-        .padding()
         .onAppear {
             notificationManager.requestNotificationAuthorization()
         }
-        .sheet(isPresented: $showMap) {
-            MapView()
-        }
-    }
-    
-    func showOnMap() {
-        showMap = true
-    }
-    
-    func sendNotification() {
-        notificationManager.displayNotification()
-    }
-    
-    func signOut() {
-        try? Auth.auth().signOut()
-        
-        self.logged = false
     }
 }
 

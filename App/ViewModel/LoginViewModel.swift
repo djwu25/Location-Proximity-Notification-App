@@ -26,7 +26,7 @@ class LoginViewModel:ObservableObject {
     // Get BiometricType
     func getBioMetricStatus()->Bool {
         let scanner = LAContext()
-        if email == storedEmail && email != "" && scanner.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: .none) {
+        if scanner.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: .none) {
             return true
         }
         return false
@@ -42,6 +42,7 @@ class LoginViewModel:ObservableObject {
             }
             
             DispatchQueue.main.async {
+                self.email = self.storedEmail
                 self.password = self.storedPassword
                 self.verifyUser()
             }
