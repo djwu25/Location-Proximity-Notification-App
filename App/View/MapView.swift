@@ -12,7 +12,6 @@ struct MapView: View {
     @StateObject private var notificationManager = NotificationManager()
     @StateObject private var locationManager = LocationManager()
     @StateObject var locations = LocationObserver()
-    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         VStack(alignment: .trailing) {

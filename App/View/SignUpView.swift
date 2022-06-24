@@ -12,6 +12,7 @@ struct SignUpView: View {
     @State var email:String = ""
     @State var password:String = ""
     @AppStorage("status") var logged = false
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         VStack {
@@ -33,6 +34,17 @@ struct SignUpView: View {
                     .foregroundColor(Color.white)
             }
             .padding()
+            Button {
+                dismiss()
+            } label: {
+                Text("Close")
+                    .padding()
+                    .frame(width: 200, height: 40)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(Color.green))
+                    .foregroundColor(Color.white)
+            }
             Spacer()
         }
         .padding()

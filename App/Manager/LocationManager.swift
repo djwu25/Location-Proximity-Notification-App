@@ -46,6 +46,10 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if Auth.auth().currentUser == nil  {
+            return
+        }
+        
         let last = locations.last
         
         let db = Firestore.firestore()
@@ -69,7 +73,7 @@ class LocationObserver: ObservableObject {
     @Published var friendLocations = [String : GeoPoint]()
     @Published var annotations = [Place]()
     @Published var distances = [String : CLLocationDistance]()
-    @Published var notClose = true
+    @Published var notClose = false
     
     private let locationManager = LocationManager()
     private let notificationManager = NotificationManager()
@@ -98,12 +102,12 @@ class LocationObserver: ObservableObject {
             
             for friend in self.distances {
                 if friend.value < self.tenMilesInMeters && self.notClose {
-                    print("Notification for Distance Triggered")
+                    print("Notification for Distance Triggered for \(friend.key)")
                     self.notificationManager.userClose = friend.key
                     self.notificationManager.displayNotification()
-                    self.notClose = false
                 }
             }
+            self.notClose = false
         }
     }
 }

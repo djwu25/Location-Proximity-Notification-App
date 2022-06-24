@@ -13,7 +13,7 @@ struct ProfileView: View {
     
     var body: some View {
         VStack {
-            Text("User: \(Auth.auth().currentUser?.email ?? "")")
+            Text("Email: \(Auth.auth().currentUser?.email ?? "")")
                 .padding()
             Text("ID:   \(Auth.auth().currentUser?.uid ?? "")")
                 .padding()
