@@ -49,6 +49,11 @@ struct HomeView: View {
                         Image(systemName: "map")
                         Text("Map")
                     }
+                MessageView()
+                    .tabItem{
+                        Image(systemName: "message")
+                        Text("Messages")
+                    }
                 ProfileView()
                     .tabItem {
                         Image(systemName: "person")
