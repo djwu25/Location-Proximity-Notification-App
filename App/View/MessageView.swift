@@ -22,9 +22,15 @@ struct MessageView: View {
     var body: some View {
         NavigationView {
             List(viewModelTwo.chatrooms) { chatroom in
-                HStack {
-                    Text(chatroom.title)
-                    Spacer()
+                ZStack {
+                    MessageRowView(chat: chatroom)
+                }
+                .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                    Button(action: {
+                        viewModelTwo.deleteChatroom(chat: chatroom)
+                    }) {
+                        Label("Delete", systemImage: "minus.circle")
+                    }.tint(.red)
                 }
             }
             .listStyle(PlainListStyle())

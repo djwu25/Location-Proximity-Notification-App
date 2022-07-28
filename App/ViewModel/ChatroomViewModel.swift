@@ -67,4 +67,22 @@ class ChatroomViewModel: ObservableObject {
             }
         }
     }
+    
+    func deleteChatroom(chat: Chatroom) {
+        if user != nil {
+            db.collection("chatrooms").whereField("joinCode", isEqualTo: Int(chat.joinCode) as Any).getDocuments() { (snapshot, error) in
+                if let error = error {
+                    print("error getting documents to delete! \(error)")
+                } else {
+                    for document in snapshot!.documents {
+                        self.db.collection("chatrooms").document(document.documentID).delete() { err in
+                            if let err = err {
+                                print("error deleting document! \(err)")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

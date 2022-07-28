@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MessageRowView: View {
     
-    let chat: Chat
+    let chat: Chatroom
     
     var body: some View {
         HStack {
@@ -20,27 +20,12 @@ struct MessageRowView: View {
             ZStack {
                 VStack(alignment: .leading, spacing: 5) {
                     HStack{
-                        Text(chat.person.name)
+                        Text(chat.title)
                             .bold()
                         
                         Spacer()
-                        
-                        Text(chat.messages.last?.date.descriptiveString() ?? "")
-                    }
-                    
-                    HStack{
-                        Text(chat.messages.last?.text ?? "")
-                            .foregroundColor(Color.gray)
-                            .lineLimit(2)
-                            .frame(height: 50, alignment: .top)
-                            .padding(.trailing, 40)
                     }
                 }
-                
-                Circle()
-                    .foregroundColor(chat.hasUnreadMessage ? .blue : .clear)
-                    .frame(width: 18, height: 18)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
                  
             }
         }
@@ -50,6 +35,6 @@ struct MessageRowView: View {
 
 struct MessageRowView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageRowView(chat: Chat.sampleChats[2])
+        MessageRowView(chat: Chatroom(id: "1", title: "Example", joinCode: 34))
     }
 }
