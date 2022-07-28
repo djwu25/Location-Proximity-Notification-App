@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 
 struct SignUpView: View {
+    @State var name:String = ""
     @State var email:String = ""
     @State var password:String = ""
     @AppStorage("status") var logged = false
@@ -18,6 +19,8 @@ struct SignUpView: View {
         VStack {
             Spacer()
             SignUpTitle()
+            TextField("Name", text: $name)
+                .textFieldStyle(PrimaryTextFieldStyle())
             TextField("Email", text: $email)
                 .textFieldStyle(PrimaryTextFieldStyle())
             SecureField("Password", text: $password)
@@ -62,6 +65,10 @@ struct SignUpView: View {
                     print(error!.localizedDescription)
                     return
                 }
+                
+                let update = Auth.auth().currentUser?.createProfileChangeRequest()
+                update?.displayName = self.name
+                update?.commitChanges()
                 
                 self.logged = true
             }

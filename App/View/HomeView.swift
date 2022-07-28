@@ -23,7 +23,7 @@ struct PrimaryButtonStyle: ButtonStyle {
 struct HomeView: View {
     
     // FOR HOME VIEW
-    
+    @StateObject private var locationManager = LocationManager()
     @StateObject private var notificationManager = NotificationManager()
     @StateObject private var locObserver = LocationObserver()
     @State private var showMap = false
@@ -101,7 +101,6 @@ struct HomeView: View {
             }
         }
         .onAppear {
-            notificationManager.requestNotificationAuthorization()
             
             // ANIMATION
             withAnimation(.easeInOut(duration: 0.3)) {
@@ -131,6 +130,7 @@ struct HomeView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                     animationValues[5] = true
                     
+                    notificationManager.requestNotificationAuthorization()
                     
                 }
             }

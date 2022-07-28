@@ -30,12 +30,19 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         switch locationManager.authorizationStatus {
             case .notDetermined:
                 locationManager.requestAlwaysAuthorization()
+                break
             case .restricted:
                 print("Need to unrestrict lcoations alert")
+                break
             case .denied:
                 print("Need permissions alert")
+                break
             case .authorizedAlways, .authorizedWhenInUse:
+                if(locationManager.location == nil) {
+                    return
+                }
                 region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+                break
             @unknown default:
                 break
             }
@@ -54,7 +61,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         
         let db = Firestore.firestore()
         
-        db.collection("locations").document("sharing").setData(["updates" : [Auth.auth().currentUser?.email : GeoPoint(latitude: (last?.coordinate.latitude)!, longitude: (last?.coordinate.longitude)!)]], merge: true) { (err) in
+        db.collection("locations").document("sharing").setData(["updates" : [Auth.auth().currentUser?.displayName ?? "" : GeoPoint(latitude: (last?.coordinate.latitude)!, longitude: (last?.coordinate.longitude)!)]], merge: true) { (err) in
             if err != nil {
                 print((err?.localizedDescription)!)
                 return
@@ -78,7 +85,7 @@ class LocationObserver: ObservableObject {
     private let locationManager = LocationManager()
     private let notificationManager = NotificationManager()
     private let tenMilesInMeters = CLLocationDistance(16093.5)
-    let userEmail = Auth.auth().currentUser?.email
+    let displayName = Auth.auth().currentUser?.displayName ?? ""
     
     init() {
         let db = Firestore.firestore()
@@ -94,7 +101,7 @@ class LocationObserver: ObservableObject {
             
             self.annotations.removeAll()
             for loc in self.friendLocations {
-                if loc.key != self.userEmail {
+                if loc.key != self.displayName {
                     self.annotations.append(Place(name: loc.key, coordinate: CLLocationCoordinate2D(latitude: loc.value.latitude, longitude: loc.value.longitude)))
                     self.distances[loc.key] = self.locationManager.locationManager?.location?.distance(from: CLLocation(latitude: loc.value.latitude, longitude: loc.value.longitude))
                 }

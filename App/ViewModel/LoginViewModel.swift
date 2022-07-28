@@ -69,7 +69,5 @@ class LoginViewModel:ObservableObject {
             withAnimation{self.logged = true}
             print("Successfully Logged in with Biometrics")
         }
-        
-        
     }
 }

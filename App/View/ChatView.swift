@@ -33,7 +33,6 @@ struct ChatView: View {
                     }
                 }
             }
-            
             toolBarView()
         }
         .padding(.top, 1)
@@ -59,8 +58,6 @@ struct ChatView: View {
                 TextField("Message ...", text: $text)
                     .padding(.horizontal, 10)
                     .frame(height: height)
-                    .foregroundColor(Color.black.opacity(0.8))
-                    .background(Color.white)
                     .clipShape(RoundedRectangle(cornerRadius: 13))
                     .focused($isFocused)
                 
