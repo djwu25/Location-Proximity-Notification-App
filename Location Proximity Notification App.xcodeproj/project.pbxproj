@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		AB1D54312873694900244159 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D54302873694900244159 /* MessageView.swift */; };
 		AB1D5433287372DE00244159 /* MessageRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D5432287372DE00244159 /* MessageRowView.swift */; };
-		AB1D54362873876700244159 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D54352873876700244159 /* MessageModel.swift */; };
-		AB1D543828738B5500244159 /* Date+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D543728738B5500244159 /* Date+Helpers.swift */; };
 		AB1D543A28738D9700244159 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D543928738D9700244159 /* MessageViewModel.swift */; };
 		AB1D543C28738F1F00244159 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D543B28738F1F00244159 /* ChatView.swift */; };
 		AB33B65A286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B659286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift */; };
@@ -57,8 +55,6 @@
 /* Begin PBXFileReference section */
 		AB1D54302873694900244159 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		AB1D5432287372DE00244159 /* MessageRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRowView.swift; sourceTree = "<group>"; };
-		AB1D54352873876700244159 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
-		AB1D543728738B5500244159 /* Date+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helpers.swift"; sourceTree = "<group>"; };
 		AB1D543928738D9700244159 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		AB1D543B28738F1F00244159 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		AB33B656286103BB00562A5B /* Location Proximity Notification App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Location Proximity Notification App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,8 +112,6 @@
 		AB1D54342873875100244159 /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				AB1D54352873876700244159 /* MessageModel.swift */,
-				AB1D543728738B5500244159 /* Date+Helpers.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -371,9 +365,7 @@
 				AB1D5433287372DE00244159 /* MessageRowView.swift in Sources */,
 				AB33B6962862647400562A5B /* LoginView.swift in Sources */,
 				AB1D543A28738D9700244159 /* MessageViewModel.swift in Sources */,
-				AB1D543828738B5500244159 /* Date+Helpers.swift in Sources */,
 				AB33B6B42866306F00562A5B /* WelcomeView.swift in Sources */,
-				AB1D54362873876700244159 /* MessageModel.swift in Sources */,
 				AB7777B42891FBCD00369142 /* ChatroomViewModel.swift in Sources */,
 				AB33B69C2862738B00562A5B /* SignUpView.swift in Sources */,
 				AB33B6A1286296AB00562A5B /* LoginViewModel.swift in Sources */,

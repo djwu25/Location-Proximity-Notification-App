@@ -6,36 +6,45 @@
 //
 
 import Foundation
+import Firebase
+
+struct Message: Codable, Identifiable {
+    var id: String?
+    var content: String
+    var name: String
+}
 
 class MessageViewModel: ObservableObject {
+    @Published var messages = [Message]()
+    private let db = Firestore.firestore()
+    private let user = Auth.auth().currentUser
     
-    @Published var chats = Chat.sampleChats
-    
-    func getSortedFilteredMessages(query: String) -> [Chat] {
-        let sortedChats = chats.sorted{
-            guard let date1 = $0.messages.last?.date else { return false }
-            guard let date2 = $1.messages.last?.date else { return false }
-            return date1 < date2
-        }
-        
-        if query == "" {
-            return sortedChats
-        }
-        return sortedChats.filter{ $0.person.name.lowercased().contains(query.lowercased()) }
-    }
-    
-    func markAsRead(_ newValue: Bool, chat: Chat) {
-        if let index = chats.firstIndex(where: { $0.id == chat.id }) {
-            chats[index].hasUnreadMessage = newValue
+    func sendMessage(messageContent: String, docID: String) {
+        if user != nil {
+            db.collection("chatrooms").document(docID).collection("messages").addDocument(data: [
+                "sentAt": Date(),
+                "displayName": user!.displayName!,
+                "content": messageContent,
+                "sender": user!.uid])
         }
     }
     
-    func sendMessage(_ text: String, in chat: Chat) -> Message? {
-        if let index = chats.firstIndex(where: { $0.id == chat.id }) {
-            let message = Message(text, type: .Sent)
-            chats[index].messages.append(message)
-            return message
+    func fetchData(docID: String) {
+        if user != nil {
+            db.collection("chatrooms").document(docID).collection("messages").order(by: "sentAt", descending: false).addSnapshotListener( { (snapshot, error) in
+                guard let documents = snapshot?.documents else {
+                    print("no documents")
+                    return
+                }
+                
+                self.messages = documents.map { docSnapshot -> Message in
+                    let data = docSnapshot.data()
+                    let docId = docSnapshot.documentID
+                    let content = data["content"] as? String ?? ""
+                    let displayName = data["displayName"] as? String ?? ""
+                    return Message(id: docId, content: content, name: displayName)
+                }
+            })
         }
-        return nil
     }
 }
