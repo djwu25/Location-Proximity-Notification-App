@@ -49,7 +49,7 @@ struct HomeView: View {
                         Image(systemName: "map")
                         Text("Map")
                     }
-                MessageView()
+                ChatroomView()
                     .tabItem{
                         Image(systemName: "message")
                         Text("Messages")
