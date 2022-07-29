@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB1D54312873694900244159 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D54302873694900244159 /* MessageView.swift */; };
-		AB1D5433287372DE00244159 /* MessageRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D5432287372DE00244159 /* MessageRowView.swift */; };
 		AB1D543A28738D9700244159 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D543928738D9700244159 /* MessageViewModel.swift */; };
 		AB33B65A286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B659286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift */; };
 		AB33B65C286103BB00562A5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B65B286103BB00562A5B /* ContentView.swift */; };
@@ -33,6 +31,8 @@
 		AB7777B42891FBCD00369142 /* ChatroomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7777B32891FBCD00369142 /* ChatroomViewModel.swift */; };
 		AB7777B6289200C500369142 /* JoinOrCreateMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7777B5289200C500369142 /* JoinOrCreateMessageView.swift */; };
 		ABEF99E128944B37004722C1 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF99E028944B37004722C1 /* MessagesView.swift */; };
+		ABEF99E328944BFC004722C1 /* ChatroomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF99E228944BFC004722C1 /* ChatroomView.swift */; };
+		ABEF99E528944C25004722C1 /* ChatroomRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF99E428944C25004722C1 /* ChatroomRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +53,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AB1D54302873694900244159 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
-		AB1D5432287372DE00244159 /* MessageRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRowView.swift; sourceTree = "<group>"; };
 		AB1D543928738D9700244159 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		AB33B656286103BB00562A5B /* Location Proximity Notification App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Location Proximity Notification App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB33B659286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location_Proximity_Notification_AppApp.swift; sourceTree = "<group>"; };
@@ -80,6 +78,8 @@
 		AB7777B32891FBCD00369142 /* ChatroomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomViewModel.swift; sourceTree = "<group>"; };
 		AB7777B5289200C500369142 /* JoinOrCreateMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinOrCreateMessageView.swift; sourceTree = "<group>"; };
 		ABEF99E028944B37004722C1 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
+		ABEF99E228944BFC004722C1 /* ChatroomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomView.swift; sourceTree = "<group>"; };
+		ABEF99E428944C25004722C1 /* ChatroomRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,10 +188,10 @@
 				AB33B69B2862738B00562A5B /* SignUpView.swift */,
 				AB33B6B128662FB400562A5B /* ProfileView.swift */,
 				AB33B6B32866306F00562A5B /* WelcomeView.swift */,
-				AB1D54302873694900244159 /* MessageView.swift */,
-				AB1D5432287372DE00244159 /* MessageRowView.swift */,
 				AB7777B5289200C500369142 /* JoinOrCreateMessageView.swift */,
 				ABEF99E028944B37004722C1 /* MessagesView.swift */,
+				ABEF99E228944BFC004722C1 /* ChatroomView.swift */,
+				ABEF99E428944C25004722C1 /* ChatroomRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -360,12 +360,12 @@
 				AB33B6982862675B00562A5B /* HomeView.swift in Sources */,
 				AB33B65C286103BB00562A5B /* ContentView.swift in Sources */,
 				AB33B68B2861321C00562A5B /* NotificationManager.swift in Sources */,
-				AB1D54312873694900244159 /* MessageView.swift in Sources */,
 				AB33B65A286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift in Sources */,
-				AB1D5433287372DE00244159 /* MessageRowView.swift in Sources */,
 				AB33B6962862647400562A5B /* LoginView.swift in Sources */,
 				AB1D543A28738D9700244159 /* MessageViewModel.swift in Sources */,
+				ABEF99E328944BFC004722C1 /* ChatroomView.swift in Sources */,
 				AB33B6B42866306F00562A5B /* WelcomeView.swift in Sources */,
+				ABEF99E528944C25004722C1 /* ChatroomRowView.swift in Sources */,
 				AB7777B42891FBCD00369142 /* ChatroomViewModel.swift in Sources */,
 				AB33B69C2862738B00562A5B /* SignUpView.swift in Sources */,
 				AB33B6A1286296AB00562A5B /* LoginViewModel.swift in Sources */,
