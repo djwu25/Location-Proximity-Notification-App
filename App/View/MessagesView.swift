@@ -12,7 +12,7 @@ struct MessagesView: View {
     
     @ObservedObject var viewModel = MessageViewModel()
     let chatroom: Chatroom
-    let currentUser = Auth.auth().currentUser
+    let currentUserName = Auth.auth().currentUser?.displayName as? String ?? ""
     
     @State var text = ""
     @FocusState private var isFocused
@@ -35,14 +35,14 @@ struct MessagesView: View {
                                     Text(message.content)
                                         .padding(.horizontal)
                                         .padding(.vertical, 12)
-                                        .background(Color.gray)
+                                        .background(currentUserName == message.name ? Color.blue : Color.gray)
                                         .cornerRadius(25)
                                 }
-                                .frame(width: reader.size.width * 0.7, alignment: .leading)
+                                .frame(width: reader.size.width * 0.7, alignment: currentUserName == message.name ? .trailing : .leading)
                                 .padding(.vertical, 2)
-                                .padding(.leading, 5)
+                                .padding(.horizontal, 5)
                             }
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .frame(maxWidth: .infinity, alignment: currentUserName == message.name ? .trailing : .leading)
                         }
                     }
                 }
