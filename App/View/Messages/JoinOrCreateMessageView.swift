@@ -26,6 +26,7 @@ struct JoinOrCreateMessageView: View {
                     }) {
                         Text("Join")
                     }
+                    .disabled(joinCode == "" ? true : false)
                 }
                 .padding()
                 

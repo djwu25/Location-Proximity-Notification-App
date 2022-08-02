@@ -16,6 +16,7 @@ struct Message: Codable, Identifiable {
 
 class MessageViewModel: ObservableObject {
     @Published var messages = [Message]()
+    @Published var users = [String]()
     private let db = Firestore.firestore()
     private let user = Auth.auth().currentUser
     
@@ -25,7 +26,7 @@ class MessageViewModel: ObservableObject {
                 "sentAt": Date(),
                 "displayName": user!.displayName!,
                 "content": messageContent,
-                "sender": user!.uid])
+                "sender": user!.displayName!])
         }
     }
     
@@ -44,6 +45,19 @@ class MessageViewModel: ObservableObject {
                     let displayName = data["displayName"] as? String ?? ""
                     return Message(id: docId, content: content, name: displayName)
                 }
+            })
+        }
+    }
+    
+    func fetchUsers(docID: String) {
+        if user != nil {
+            db.collection("chatrooms").document(docID).getDocument( completion: { (snapshot, error) in
+                guard let data = snapshot?.data() else {
+                    print("no document found")
+                    return
+                }
+                
+                self.users = data["users"] as? [String] ?? []
             })
         }
     }

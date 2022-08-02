@@ -24,13 +24,13 @@ struct ChatroomView: View {
                     ZStack {
                         ChatroomRowView(chat: chatroom)
                     }
-                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                        Button(action: {
-                            viewModel.deleteChatroom(chat: chatroom)
-                        }) {
-                            Label("Delete", systemImage: "minus.circle")
-                        }.tint(.red)
-                    }
+                }
+                .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                    Button(action: {
+                        viewModel.removeUserFromChatroom(chat: chatroom)
+                    }) {
+                        Label("Delete", systemImage: "minus.circle")
+                    }.tint(.red)
                 }
             }
             .listStyle(PlainListStyle())

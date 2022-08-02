@@ -19,6 +19,8 @@ struct MessagesView: View {
     
     @State private var messageIDToScroll: UUID?
     
+    @State var messageInfoSheet = false;
+    
     init(chatroom: Chatroom) {
         self.chatroom = chatroom
         viewModel.fetchData(docID: chatroom.id)
@@ -59,8 +61,17 @@ struct MessagesView: View {
                         .bold()
                 }
             }
+            
+            ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
+                Button(action: {messageInfoSheet.toggle()}) {
+                    Image(systemName: "info.circle")
+                }
+            }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $messageInfoSheet) {
+            MessageInfoView(docID: chatroom.id)
+        }
     }
     
     func toolBarView() -> some View {
@@ -95,6 +106,10 @@ struct MessagesView: View {
         }
     }
     
+    func messageInfo() {
+        
+    }
+    
     func sendMessage() {
         viewModel.sendMessage(messageContent: text, docID: chatroom.id)
         text = ""
@@ -119,8 +134,6 @@ struct MessagesView: View {
              }
          }
      }
-     
-     FIX USER SEND MESSAGE ALIGNMENT AND BACKGROUND COLOR
      */
 }
 

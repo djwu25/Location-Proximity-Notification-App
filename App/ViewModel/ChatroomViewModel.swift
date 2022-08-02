@@ -21,7 +21,7 @@ class ChatroomViewModel: ObservableObject {
     
     func fetchData() {
         if user != nil {
-            db.collection("chatrooms").whereField("users", arrayContains: user!.uid).addSnapshotListener( { (snapshot, error) in
+            db.collection("chatrooms").whereField("users", arrayContains: user!.displayName!).addSnapshotListener( { (snapshot, error) in
                 guard let documents = snapshot?.documents else {
                     print("no docs returned")
                     return
@@ -43,7 +43,7 @@ class ChatroomViewModel: ObservableObject {
             db.collection("chatrooms").addDocument(data: [
                 "title": title,
                 "joinCode": Int.random(in: 0..<99999),
-                "users": [user!.uid]]) { err in
+                "users": [user!.displayName!]]) { err in
                     if let err = err {
                         print("error adding document! \(err)")
                     } else {
@@ -60,7 +60,7 @@ class ChatroomViewModel: ObservableObject {
                     print("error getting documents! \(error)")
                 } else {
                     for document in snapshot!.documents {
-                        self.db.collection("chatrooms").document(document.documentID).updateData(["users": FieldValue.arrayUnion([self.user!.uid])])
+                        self.db.collection("chatrooms").document(document.documentID).updateData(["users": FieldValue.arrayUnion([self.user!.displayName!])])
                         handler()
                     }
                 }
@@ -68,18 +68,27 @@ class ChatroomViewModel: ObservableObject {
         }
     }
     
-    func deleteChatroom(chat: Chatroom) {
+    func removeUserFromChatroom(chat: Chatroom) {
         if user != nil {
             db.collection("chatrooms").whereField("joinCode", isEqualTo: Int(chat.joinCode) as Any).getDocuments() { (snapshot, error) in
                 if let error = error {
                     print("error getting documents to delete! \(error)")
-                } else {
-                    for document in snapshot!.documents {
-                        self.db.collection("chatrooms").document(document.documentID).delete() { err in
-                            if let err = err {
-                                print("error deleting document! \(err)")
-                            }
-                        }
+                    return
+                }
+                
+                guard let documents = snapshot?.documents else {
+                    print("no document found")
+                    return
+                }
+                
+                for document in documents {
+                    let data = document.data()
+                    let users = data["users"] as? [String] ?? []
+                    
+                    if users.capacity == 1 {
+                        self.db.collection("chatrooms").document(document.documentID).delete()
+                    } else {
+                        self.db.collection("chatrooms").document(document.documentID).updateData(["users": FieldValue.arrayRemove([self.user!.displayName!])])
                     }
                 }
             }
