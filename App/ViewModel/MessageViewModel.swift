@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import CoreLocation
 
 struct Message: Codable, Identifiable {
     var id: String?
@@ -17,6 +18,8 @@ struct Message: Codable, Identifiable {
 class MessageViewModel: ObservableObject {
     @Published var messages = [Message]()
     @Published var users = [String]()
+    @Published var title = String()
+    @Published var joinCode = Int()
     private let db = Firestore.firestore()
     private let user = Auth.auth().currentUser
     
@@ -58,6 +61,48 @@ class MessageViewModel: ObservableObject {
                 }
                 
                 self.users = data["users"] as? [String] ?? []
+            })
+        }
+    }
+    
+    func fetchTitle(docID: String) {
+        if user != nil {
+            db.collection("chatrooms").document(docID).getDocument( completion: { (snapshot, error) in
+                guard let data = snapshot?.data() else {
+                    print("no document found")
+                    return
+                }
+                
+                self.title = data["title"] as? String ?? ""
+            })
+        }
+    }
+    
+    func fetchJoinCode(docID: String) {
+        if user != nil {
+            db.collection("chatrooms").document(docID).getDocument( completion: { (snapshot, error) in
+                guard let data = snapshot?.data() else {
+                    print("no document found")
+                    return
+                }
+                
+                self.joinCode = data["joinCode"] as? Int ?? -1
+            })
+        }
+    }
+    
+    func setUpMap(docID: String) {
+        if user != nil {
+            db.collection("chatrooms").document(docID)
+                .collection("user_locations").document("shared_locations")
+                .getDocument( completion: { (document, error) in
+                    if document?.exists ?? false {
+                        return
+                    } else {
+                        self.db.collection("chatrooms").document(docID)
+                            .collection("user_locations").document("shared_locations")
+                            .setData(["updates":[String : GeoPoint]()])
+                    }
             })
         }
     }

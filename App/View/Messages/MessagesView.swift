@@ -24,6 +24,7 @@ struct MessagesView: View {
     init(chatroom: Chatroom) {
         self.chatroom = chatroom
         viewModel.fetchData(docID: chatroom.id)
+        viewModel.setUpMap(docID: chatroom.id)
     }
     
     var body: some View {
@@ -70,7 +71,7 @@ struct MessagesView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $messageInfoSheet) {
-            MessageInfoView(docID: chatroom.id)
+            MessageInfoView(docID: chatroom.id, locationManager: MessageLocationManager(docID: chatroom.id), locationObserver: MessageLocationObserver(docID: chatroom.id))
         }
     }
     

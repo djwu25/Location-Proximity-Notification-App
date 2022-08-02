@@ -49,34 +49,6 @@ struct ChatroomView: View {
         })
     }
     
-    /* ForEach(viewModel.getSortedFilteredMessages(query: query)) { chat in
-        ZStack {
-            MessageRowView(chat: chat)
-            
-            NavigationLink (destination: {
-                ChatView(chat: chat)
-                    .environmentObject(viewModel)
-            }) {
-                EmptyView()
-            }
-            .buttonStyle(PlainButtonStyle())
-            .frame(width: 0)
-            .opacity(0)
-        }
-        .swipeActions(edge: .leading, allowsFullSwipe: true) {
-            Button(action: {
-                viewModel.markAsRead(!chat.hasUnreadMessage, chat: chat)
-            }) {
-                if chat.hasUnreadMessage {
-                    Label("Read", systemImage: "text.bubble")
-                } else {
-                    Label("Unread", systemImage: "circle.fill")
-                }
-            }
-            .tint(.blue)
-        }
-    } */
-    
 }
 
 struct ChatroomView_Previews: PreviewProvider {

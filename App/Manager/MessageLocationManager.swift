@@ -1,8 +1,8 @@
 //
-//  LocationManager.swift
+//  MessageLocationManager.swift
 //  Location Proximity Notification App
 //
-//  Created by Duke Wu on 6/20/22.
+//  Created by Duke Wu on 8/2/22.
 //
 
 import UIKit
@@ -10,10 +10,18 @@ import MapKit
 import CoreLocation
 import Firebase
 
-class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
+class MessageLocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
+    var docID: String
+    
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:32.8801, longitude: -117.2340), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     
+    
+    let db = Firestore.firestore()
     var locationManager:CLLocationManager?
+    
+    init(docID: String) {
+        self.docID = docID
+    }
     
     func checkIfLocationServicesIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {
@@ -59,19 +67,11 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         
         let last = locations.last
         
-        let db = Firestore.firestore()
-        
-        db.collection("locations").document("sharing").setData(["updates" : [Auth.auth().currentUser?.displayName ?? "" : GeoPoint(latitude: (last?.coordinate.latitude)!, longitude: (last?.coordinate.longitude)!)]], merge: true) { (err) in
+        db.collection("chatrooms").document(docID).collection("user_locations").document("shared_locations").setData(["updates" : [Auth.auth().currentUser?.displayName ?? "" : GeoPoint(latitude: (last?.coordinate.latitude)!, longitude: (last?.coordinate.longitude)!)]], merge: true) { (err) in
             if err != nil {
                 print((err?.localizedDescription)!)
                 return
             }
         }
     }
-}
-
-struct Place: Identifiable {
-  let id = UUID()
-  var name: String
-  var coordinate: CLLocationCoordinate2D
 }

@@ -35,6 +35,9 @@
 		ABEF99E128944B37004722C1 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF99E028944B37004722C1 /* MessagesView.swift */; };
 		ABEF99E328944BFC004722C1 /* ChatroomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF99E228944BFC004722C1 /* ChatroomView.swift */; };
 		ABEF99E528944C25004722C1 /* ChatroomRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF99E428944C25004722C1 /* ChatroomRowView.swift */; };
+		ABFF94C428999D3100A4FE1E /* LocationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFF94C328999D3100A4FE1E /* LocationObserver.swift */; };
+		ABFF94C628999D7D00A4FE1E /* MessageLocationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFF94C528999D7D00A4FE1E /* MessageLocationObserver.swift */; };
+		ABFF94C828999EE300A4FE1E /* MessageLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFF94C728999EE300A4FE1E /* MessageLocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +87,9 @@
 		ABEF99E028944B37004722C1 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		ABEF99E228944BFC004722C1 /* ChatroomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomView.swift; sourceTree = "<group>"; };
 		ABEF99E428944C25004722C1 /* ChatroomRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomRowView.swift; sourceTree = "<group>"; };
+		ABFF94C328999D3100A4FE1E /* LocationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationObserver.swift; sourceTree = "<group>"; };
+		ABFF94C528999D7D00A4FE1E /* MessageLocationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageLocationObserver.swift; sourceTree = "<group>"; };
+		ABFF94C728999EE300A4FE1E /* MessageLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageLocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,13 +119,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AB1D54342873875100244159 /* Message */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Message;
-			sourceTree = "<group>";
-		};
 		AB33B64D286103BB00562A5B = {
 			isa = PBXGroup;
 			children = (
@@ -143,7 +142,7 @@
 		AB33B658286103BB00562A5B /* App */ = {
 			isa = PBXGroup;
 			children = (
-				AB1D54342873875100244159 /* Message */,
+				ABFF94C228999D2200A4FE1E /* Observer */,
 				AB33B69F2862960D00562A5B /* ViewModel */,
 				AB33B69E2862765700562A5B /* Manager */,
 				AB33B69D2862764600562A5B /* View */,
@@ -201,6 +200,7 @@
 			children = (
 				AB33B68728611E1300562A5B /* LocationManager.swift */,
 				AB33B68A2861321C00562A5B /* NotificationManager.swift */,
+				ABFF94C728999EE300A4FE1E /* MessageLocationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -235,6 +235,15 @@
 				AB33B69B2862738B00562A5B /* SignUpView.swift */,
 			);
 			path = LoginSignUp;
+			sourceTree = "<group>";
+		};
+		ABFF94C228999D2200A4FE1E /* Observer */ = {
+			isa = PBXGroup;
+			children = (
+				ABFF94C328999D3100A4FE1E /* LocationObserver.swift */,
+				ABFF94C528999D7D00A4FE1E /* MessageLocationObserver.swift */,
+			);
+			path = Observer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,12 +384,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABFF94C828999EE300A4FE1E /* MessageLocationManager.swift in Sources */,
 				AB33B68828611E1300562A5B /* LocationManager.swift in Sources */,
 				AB7777B6289200C500369142 /* JoinOrCreateMessageView.swift in Sources */,
 				ABEF99E128944B37004722C1 /* MessagesView.swift in Sources */,
 				AB33B69A286267AA00562A5B /* MapView.swift in Sources */,
 				AB33B6982862675B00562A5B /* HomeView.swift in Sources */,
 				ABB977B628983F7900B47E0D /* MessageInfoView.swift in Sources */,
+				ABFF94C628999D7D00A4FE1E /* MessageLocationObserver.swift in Sources */,
 				AB33B65C286103BB00562A5B /* ContentView.swift in Sources */,
 				AB33B68B2861321C00562A5B /* NotificationManager.swift in Sources */,
 				AB33B65A286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift in Sources */,
@@ -393,6 +404,7 @@
 				AB7777B42891FBCD00369142 /* ChatroomViewModel.swift in Sources */,
 				AB33B69C2862738B00562A5B /* SignUpView.swift in Sources */,
 				AB33B6A1286296AB00562A5B /* LoginViewModel.swift in Sources */,
+				ABFF94C428999D3100A4FE1E /* LocationObserver.swift in Sources */,
 				AB33B6B228662FB400562A5B /* ProfileView.swift in Sources */,
 				AB33B684286112AE00562A5B /* User.swift in Sources */,
 			);
