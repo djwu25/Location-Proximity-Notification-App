@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct WelcomeView: View {
+    
+    @State var friendView = false
+    
     var body: some View {
-        Text("Welcome to the Proximity App")
-            .bold()
-            .foregroundColor(Color.green)
-            .font(.title)
+        VStack {
+            Text("Welcome to the Proximity App")
+                .bold()
+                .foregroundColor(Color.green)
+                .font(.title)
+            Spacer()
+            Button(action: {friendView.toggle()}) {
+                Text("Friends")
+            }
+            .buttonStyle(PrimaryButtonStyle())
+        }
+        .sheet(isPresented: $friendView) {
+            FullListFriendView()
+        }
     }
 }
 

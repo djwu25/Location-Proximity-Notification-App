@@ -30,6 +30,8 @@
 		AB33B6B42866306F00562A5B /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B6B32866306F00562A5B /* WelcomeView.swift */; };
 		AB7777B42891FBCD00369142 /* ChatroomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7777B32891FBCD00369142 /* ChatroomViewModel.swift */; };
 		AB7777B6289200C500369142 /* JoinOrCreateMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7777B5289200C500369142 /* JoinOrCreateMessageView.swift */; };
+		AB893D1E289AF564001E8DB3 /* FullListFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB893D1D289AF564001E8DB3 /* FullListFriendView.swift */; };
+		AB893D20289AF6B6001E8DB3 /* FriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB893D1F289AF6B6001E8DB3 /* FriendViewModel.swift */; };
 		ABB977B628983F7900B47E0D /* MessageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB977B528983F7900B47E0D /* MessageInfoView.swift */; };
 		ABB977B828985AAD00B47E0D /* MessageMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB977B728985AAD00B47E0D /* MessageMapView.swift */; };
 		ABEF99E128944B37004722C1 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF99E028944B37004722C1 /* MessagesView.swift */; };
@@ -82,6 +84,8 @@
 		AB33B6B32866306F00562A5B /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		AB7777B32891FBCD00369142 /* ChatroomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomViewModel.swift; sourceTree = "<group>"; };
 		AB7777B5289200C500369142 /* JoinOrCreateMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinOrCreateMessageView.swift; sourceTree = "<group>"; };
+		AB893D1D289AF564001E8DB3 /* FullListFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullListFriendView.swift; sourceTree = "<group>"; };
+		AB893D1F289AF6B6001E8DB3 /* FriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewModel.swift; sourceTree = "<group>"; };
 		ABB977B528983F7900B47E0D /* MessageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInfoView.swift; sourceTree = "<group>"; };
 		ABB977B728985AAD00B47E0D /* MessageMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMapView.swift; sourceTree = "<group>"; };
 		ABEF99E028944B37004722C1 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 				AB33B699286267AA00562A5B /* MapView.swift */,
 				AB33B6B128662FB400562A5B /* ProfileView.swift */,
 				AB33B6B32866306F00562A5B /* WelcomeView.swift */,
+				AB893D1D289AF564001E8DB3 /* FullListFriendView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 				AB33B6A0286296AB00562A5B /* LoginViewModel.swift */,
 				AB1D543928738D9700244159 /* MessageViewModel.swift */,
 				AB7777B32891FBCD00369142 /* ChatroomViewModel.swift */,
+				AB893D1F289AF6B6001E8DB3 /* FriendViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -397,12 +403,14 @@
 				AB33B65A286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift in Sources */,
 				AB33B6962862647400562A5B /* LoginView.swift in Sources */,
 				AB1D543A28738D9700244159 /* MessageViewModel.swift in Sources */,
+				AB893D1E289AF564001E8DB3 /* FullListFriendView.swift in Sources */,
 				ABEF99E328944BFC004722C1 /* ChatroomView.swift in Sources */,
 				AB33B6B42866306F00562A5B /* WelcomeView.swift in Sources */,
 				ABB977B828985AAD00B47E0D /* MessageMapView.swift in Sources */,
 				ABEF99E528944C25004722C1 /* ChatroomRowView.swift in Sources */,
 				AB7777B42891FBCD00369142 /* ChatroomViewModel.swift in Sources */,
 				AB33B69C2862738B00562A5B /* SignUpView.swift in Sources */,
+				AB893D20289AF6B6001E8DB3 /* FriendViewModel.swift in Sources */,
 				AB33B6A1286296AB00562A5B /* LoginViewModel.swift in Sources */,
 				ABFF94C428999D3100A4FE1E /* LocationObserver.swift in Sources */,
 				AB33B6B228662FB400562A5B /* ProfileView.swift in Sources */,
