@@ -13,6 +13,7 @@ struct WelcomeView: View {
     
     var body: some View {
         VStack {
+            Spacer()
             Text("Welcome to the Proximity App")
                 .bold()
                 .foregroundColor(Color.green)
@@ -22,8 +23,9 @@ struct WelcomeView: View {
                 Text("Friends")
             }
             .buttonStyle(PrimaryButtonStyle())
+            Spacer()
         }
-        .sheet(isPresented: $friendView) {
+        .fullScreenCover(isPresented: $friendView) {
             FullListFriendView()
         }
     }

@@ -71,6 +71,11 @@ struct SignUpView: View {
                 update?.commitChanges()
                 
                 self.logged = true
+                
+                Firestore.firestore().collection("users").document(self.email).setData(
+                    ["name" : self.name,
+                     "friends" : [String](),
+                     "friend_requests" : [String]() ])
             }
         }
         

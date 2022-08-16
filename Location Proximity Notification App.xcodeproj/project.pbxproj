@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB10ED7A28AB0B7A0064E25A /* FriendRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10ED7928AB0B7A0064E25A /* FriendRequestView.swift */; };
 		AB1D543A28738D9700244159 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D543928738D9700244159 /* MessageViewModel.swift */; };
 		AB33B65A286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B659286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift */; };
 		AB33B65C286103BB00562A5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B65B286103BB00562A5B /* ContentView.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB10ED7928AB0B7A0064E25A /* FriendRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestView.swift; sourceTree = "<group>"; };
 		AB1D543928738D9700244159 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		AB33B656286103BB00562A5B /* Location Proximity Notification App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Location Proximity Notification App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB33B659286103BB00562A5B /* Location_Proximity_Notification_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location_Proximity_Notification_AppApp.swift; sourceTree = "<group>"; };
@@ -123,6 +125,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB10ED7828AB0B690064E25A /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				AB893D1D289AF564001E8DB3 /* FullListFriendView.swift */,
+				AB10ED7928AB0B7A0064E25A /* FriendRequestView.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
 		AB33B64D286103BB00562A5B = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +199,7 @@
 		AB33B69D2862764600562A5B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AB10ED7828AB0B690064E25A /* Friends */,
 				ABB977B128983F1E00B47E0D /* LoginSignUp */,
 				ABB977B028983F0800B47E0D /* Messages */,
 				AB33B65B286103BB00562A5B /* ContentView.swift */,
@@ -195,7 +207,6 @@
 				AB33B699286267AA00562A5B /* MapView.swift */,
 				AB33B6B128662FB400562A5B /* ProfileView.swift */,
 				AB33B6B32866306F00562A5B /* WelcomeView.swift */,
-				AB893D1D289AF564001E8DB3 /* FullListFriendView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -408,6 +419,7 @@
 				AB33B6B42866306F00562A5B /* WelcomeView.swift in Sources */,
 				ABB977B828985AAD00B47E0D /* MessageMapView.swift in Sources */,
 				ABEF99E528944C25004722C1 /* ChatroomRowView.swift in Sources */,
+				AB10ED7A28AB0B7A0064E25A /* FriendRequestView.swift in Sources */,
 				AB7777B42891FBCD00369142 /* ChatroomViewModel.swift in Sources */,
 				AB33B69C2862738B00562A5B /* SignUpView.swift in Sources */,
 				AB893D20289AF6B6001E8DB3 /* FriendViewModel.swift in Sources */,

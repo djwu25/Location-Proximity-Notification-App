@@ -21,7 +21,7 @@ class ChatroomViewModel: ObservableObject {
     
     func fetchData() {
         if user != nil {
-            db.collection("chatrooms").whereField("users", arrayContains: user!.displayName!).addSnapshotListener( { (snapshot, error) in
+            db.collection("chatrooms").whereField("users", arrayContains: user!.displayName ?? "").addSnapshotListener( { (snapshot, error) in
                 guard let documents = snapshot?.documents else {
                     print("no docs returned")
                     return
