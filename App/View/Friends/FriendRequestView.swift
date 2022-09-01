@@ -13,14 +13,34 @@ struct FriendRequestView: View {
     @ObservedObject var friendViewModel = FriendViewModel()
     @State var friendEmail = ""
     
+    init() {
+        friendViewModel.fetchFriendData()
+        friendViewModel.fetchFriendRequests()
+    }
+    
     var body: some View {
         VStack {
             Text("Friend Requests")
                 .font(.title)
                 .bold()
             List {
-                ForEach(0..<10) { num in
-                    Text("Test")
+                ForEach(friendViewModel.friendRequests, id: \.self) { request in
+                    HStack {
+                        Text(request)
+                            .padding(.trailing)
+                            .lineLimit(1)
+                        Button {
+                            friendViewModel.makeFriend(request)
+                        } label: {
+                            Image(systemName: "checkmark")
+                        }
+                        Button {
+                            friendViewModel.deleteFriendRequest(request)
+                        } label: {
+                            Text("X")
+                        }
+                        .padding(.leading)
+                    }
                 }
             }
             TextField("Friend's Email", text: $friendEmail)

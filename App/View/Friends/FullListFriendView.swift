@@ -15,11 +15,15 @@ struct FullListFriendView: View {
     var currentUserEmail = Auth.auth().currentUser?.email
     @State var sendingFriendRequest = false;
     
+    init() {
+        friendViewModel.fetchFriendData()
+    }
+    
     var body: some View {
         NavigationView {
             ScrollView {
-                ForEach(0..<10) { num in
-                    Text(currentUserEmail!)
+                ForEach(friendViewModel.friends, id: \.self) { friend in
+                    Text(friend)
                 }
             }
             .navigationTitle("Friends")

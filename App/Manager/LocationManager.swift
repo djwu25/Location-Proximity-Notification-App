@@ -13,6 +13,7 @@ import Firebase
 class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:32.8801, longitude: -117.2340), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     
+    var currentUser = Auth.auth().currentUser
     var locationManager:CLLocationManager?
     
     func checkIfLocationServicesIsEnabled() {
@@ -53,15 +54,19 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if Auth.auth().currentUser == nil  {
+        if currentUser == nil  {
             return
         }
         
         let last = locations.last
         
+        if last == nil || last?.coordinate.latitude == nil || last?.coordinate.longitude == nil || currentUser?.displayName == nil {
+            return
+        }
+        
         let db = Firestore.firestore()
         
-        db.collection("locations").document("sharing").setData(["updates" : [Auth.auth().currentUser?.displayName ?? "" : GeoPoint(latitude: (last?.coordinate.latitude)!, longitude: (last?.coordinate.longitude)!)]], merge: true) { (err) in
+        db.collection("locations").document("sharing").setData(["updates" : [currentUser?.displayName ?? "" : GeoPoint(latitude: (last?.coordinate.latitude)!, longitude: (last?.coordinate.longitude)!)]], merge: true) { (err) in
             if err != nil {
                 print((err?.localizedDescription)!)
                 return

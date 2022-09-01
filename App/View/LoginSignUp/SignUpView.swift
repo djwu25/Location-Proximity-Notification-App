@@ -72,7 +72,7 @@ struct SignUpView: View {
                 
                 self.logged = true
                 
-                Firestore.firestore().collection("users").document(self.email).setData(
+                Firestore.firestore().collection("users").document(self.email.lowercased()).setData(
                     ["name" : self.name,
                      "friends" : [String](),
                      "friend_requests" : [String]() ])
